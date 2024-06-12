@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todo/css/style.css' %}">
+</head>
+<body>
+    <div class="register">
+        <div><h1>Register Here</h1></div>
+        {% if messages %}
+            {%for message in messages%}
+               <p style="color: firebrick;"> {{message}}</p>
+            {%endfor%}
+        {% endif %}
+        <div class="register_form-div">
+            <form action="" class=" register-form" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label for="username">Username</label>
+                </div>
+                <div>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div>
+                    <label for="email">email</label>
+                </div>
+                <div>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                </div>
+                <div>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <!-- <div>
+                    <label for="password">Confirm Password</label>
+                </div>
+                <div>
+                    <input type="password">
+                </div> -->
+                <div>
+                    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                </div>
+                <button>
+                    Register
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
